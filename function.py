@@ -396,7 +396,7 @@ def predict_sam(args, val_loader, epoch, net: nn.Module, clean_dir=True):
                     )
 
                     #### change the size of pred ####
-                    pred = torchvision.transforms.Resize((640, 320))(pred)
+                    pred = torchvision.transforms.Resize((320, 640))(pred)
                     #################################
                 
                     '''save predict'''
