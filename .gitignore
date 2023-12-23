@@ -2,3 +2,5 @@
 /logs
 /runs
 pipline.sh
+/data/*
+!/data/.gitkeep
