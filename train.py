@@ -110,6 +110,14 @@ elif args.dataset == 'REFUGE':
     nice_test_loader = DataLoader(refuge_test_dataset, batch_size=args.b, shuffle=False, num_workers=8, pin_memory=True)
     '''end'''
 
+elif args.dataset == 'mydataset':
+    '''mydataset'''
+    mydata_train_dataset = MyDataset(args, args.data_path, transform = transform_train, transform_msk= transform_train_seg, mode = 'train')
+    mydata_test_dataset = MyDataset(args, args.data_path, transform = transform_test, transform_msk= transform_test_seg, mode = 'test')
+
+    nice_train_loader = DataLoader(mydata_train_dataset, batch_size=args.b, shuffle=True, num_workers=8, pin_memory=True)
+    nice_test_loader = DataLoader(mydata_test_dataset, batch_size=args.b, shuffle=False, num_workers=8, pin_memory=True)
+    '''end'''
 
 '''checkpoint path and tensorboard'''
 # iter_per_epoch = len(Glaucoma_training_loader)
