@@ -5,3 +5,4 @@ pipline.sh
 /data/*
 !/data/.gitkeep
 __pycache__
+my_weights
