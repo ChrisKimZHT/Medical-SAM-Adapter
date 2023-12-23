@@ -271,6 +271,8 @@ def validation_sam(args, val_loader, epoch, net: nn.Module, clean_dir=True):
                         dense_prompt_embeddings=de, 
                         multimask_output=False,
                     )
+
+                    pred = torchvision.transforms.Resize((args.image_size,args.image_size))(pred)
                 
                     tot += lossfunc(pred, masks)
 

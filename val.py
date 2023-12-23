@@ -87,7 +87,7 @@ transform_train = transforms.Compose([
 
 transform_train_seg = transforms.Compose([
     transforms.ToTensor(),
-    transforms.Resize((args.out_size,args.out_size)),
+    transforms.Resize((args.image_size,args.image_size)),
 ])
 
 transform_test = transforms.Compose([
@@ -97,7 +97,7 @@ transform_test = transforms.Compose([
 
 transform_test_seg = transforms.Compose([
     transforms.ToTensor(),
-    transforms.Resize((args.out_size, args.out_size)),
+    transforms.Resize((args.image_size, args.image_size)),
     
 ])
 '''data end'''
