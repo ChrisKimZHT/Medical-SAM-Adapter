@@ -275,12 +275,13 @@ def validation_sam(args, val_loader, epoch, net: nn.Module, clean_dir=True):
                     tot += lossfunc(pred, masks)
 
                     '''vis images'''
-                    if ind % args.vis == 0:
-                        namecat = 'Test'
-                        for na in name:
-                            img_name = na.split('/')[-1].split('.')[0]
-                            namecat = namecat + img_name + '+'
-                        vis_image(imgs,pred, masks, os.path.join(args.path_helper['sample_path'], namecat+'epoch+' +str(epoch) + '.jpg'), reverse=False, points=showp)
+                    if args.vis:
+                        if ind % args.vis == 0:
+                            namecat = 'Test'
+                            for na in name:
+                                img_name = na.split('/')[-1].split('.')[0]
+                                namecat = namecat + img_name + '+'
+                            vis_image(imgs,pred, masks, os.path.join(args.path_helper['sample_path'], namecat+'epoch+' +str(epoch) + '.jpg'), reverse=False, points=showp)
                     
 
                     temp = eval_seg(pred, masks, threshold)
