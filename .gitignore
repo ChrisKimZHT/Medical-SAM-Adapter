@@ -4,3 +4,4 @@
 pipline.sh
 /data/*
 !/data/.gitkeep
+__pycache__
