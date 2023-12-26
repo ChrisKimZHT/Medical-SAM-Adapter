@@ -35,8 +35,8 @@ def process_images_in_directory(input_dir, output_dir, threshold):
 
 
 if __name__ == "__main__":
-    input_directory = './logs/mydataset_2023_12_26_09_41_08/Samples_merged'
+    input_directory = './logs/mydataset_2023_12_26_12_47_36/Samples_merged'
     output_directory = input_directory + '_filtered'
-    threshold = 100  # 根据需要调整阈值
+    threshold = 200  # 根据需要调整阈值
 
     process_images_in_directory(input_directory, output_directory, threshold)

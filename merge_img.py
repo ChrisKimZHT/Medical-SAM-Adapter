@@ -9,7 +9,7 @@ def merge_images(input_dir, output_dir):
     for file in tqdm(files):
         if file.startswith("predictleft_") and file.endswith(".jpg"):
             left_image_path = os.path.join(input_dir, file)
-            right_image_id = file.split("_")[1].split(".")[0]
+            right_image_id = file.removeprefix("predictleft_").removesuffix(".jpg")
             right_image_path = os.path.join(input_dir, f"predictright_{right_image_id}.jpg")
             
             if os.path.exists(right_image_path):
@@ -18,11 +18,11 @@ def merge_images(input_dir, output_dir):
 
                 right_image = right_image.transpose(Image.FLIP_LEFT_RIGHT)
                 
-                merged_image = Image.new("RGB", (640, 320))
+                merged_image = Image.new("1", (640, 320))
                 merged_image.paste(left_image, (0, 0))
                 merged_image.paste(right_image, (320, 0))
                 
-                output_path = os.path.join(output_dir, f"{right_image_id}.jpg")
+                output_path = os.path.join(output_dir, f"{right_image_id}.png")
                 merged_image.save(output_path)
             else:
                 print(f"右侧图片不存在: {right_image_path}")
@@ -35,7 +35,7 @@ def merge_images_2(input_dir, output_dir):
     for file in tqdm(files):
         if file.startswith("predictleft_") and file.endswith(".jpg"):
             left_image_path = os.path.join(input_dir, file)
-            right_image_id = file.split("_")[1].split(".")[0]
+            right_image_id = file.removeprefix("predictleft_").removesuffix(".jpg")
             right_image_path = os.path.join(input_dir, f"predictright_{right_image_id}.jpg")
             
             if os.path.exists(right_image_path):
@@ -57,8 +57,8 @@ def merge_images_2(input_dir, output_dir):
             else:
                 print(f"右侧图片不存在: {right_image_path}")
 
-input_directory = "./logs/mydataset_2023_12_26_09_41_08/Samples"
+input_directory = "./logs/mydataset_2023_12_26_12_47_36/Samples"
 output_directory = input_directory + "_merged"
 
-# merge_images(input_directory, output_directory)
-merge_images_2(input_directory, output_directory)
+merge_images(input_directory, output_directory)
+# merge_images_2(input_directory, output_directory)

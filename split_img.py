@@ -56,5 +56,5 @@ def split_images_2(input_dir, output_dir):
 input_directory = "./data/predict"
 output_directory = input_directory + "_split"
 
-# split_images(input_directory, output_directory)
-split_images_2(input_directory, output_directory)
+split_images(input_directory, output_directory)
+# split_images_2(input_directory, output_directory)
