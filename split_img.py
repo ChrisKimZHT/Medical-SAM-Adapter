@@ -42,7 +42,7 @@ def split_images_2(input_dir, output_dir):
         split_point = width // 2
 
         left_image = original_image.crop((30, 0, split_point + 30, height))
-        right_image = original_image.crop((split_point - 30, 0, width, height))
+        right_image = original_image.crop((split_point - 30, 0, width - 30, height))
 
         left_output_path = os.path.join(output_dir, f"left_{image_file}")
         right_output_path = os.path.join(output_dir, f"right_{image_file}")
