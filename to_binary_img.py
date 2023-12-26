@@ -19,7 +19,7 @@ def batch_convert_to_binary(input_directory, output_directory, threshold=128):
             binary_image.save(output_path)
 
 if __name__ == "__main__":
-    input_dir = "./logs/mydataset_2023_12_23_16_26_56/Samples"
-    output_dir = "./logs/mydataset_2023_12_23_16_26_56/Samples_binary"
+    input_dir = "./logs/mydataset_2023_12_26_09_41_08/Samples_merged"
+    output_dir = input_dir + "_binary"
     threshold_value = 128
     batch_convert_to_binary(input_dir, output_dir, threshold_value)
