@@ -50,7 +50,7 @@ def merge_images_2(input_dir, output_dir):
                 left_temp.paste(left_image, (30, 0))
                 right_temp.paste(right_image, (290, 0))
 
-                merged_image = Image.eval(ImageChops.logical_or(left_temp, right_temp), lambda px: 255 if px > 0 else 0)
+                merged_image = ImageChops.logical_or(left_temp, right_temp)
                 
                 output_path = os.path.join(output_dir, f"{right_image_id}.jpg")
                 merged_image.save(output_path)
