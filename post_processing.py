@@ -2,6 +2,7 @@ import cv2
 import os
 import numpy as np
 from tqdm import tqdm
+from PIL import Image
 
 def filter_small_connected_components(binary_image, threshold):
     nb_components, output, stats, _ = cv2.connectedComponentsWithStats(binary_image, connectivity=8)
@@ -24,14 +25,18 @@ def process_images_in_directory(input_dir, output_dir, threshold):
             image_path = os.path.join(input_dir, filename)
             binary_image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
-            filtered_image = filter_small_connected_components(binary_image, threshold)
+            filtered_image = filter_small_connected_components(binary_image, threshold).astype(np.bool_)
 
-            output_path = os.path.join(output_dir, f"filtered_{filename}")
-            cv2.imwrite(output_path, filtered_image)
+            pil_image = Image.fromarray(filtered_image)
+
+            output_path = os.path.join(output_dir, filename)
+
+            pil_image.save(output_path)
+
 
 if __name__ == "__main__":
-    input_directory = './logs/mydataset_2023_12_26_09_41_08/Samples_merged_binary'
+    input_directory = './logs/mydataset_2023_12_26_09_41_08/Samples_merged'
     output_directory = input_directory + '_filtered'
-    threshold = 0  # 根据需要调整阈值
+    threshold = 100  # 根据需要调整阈值
 
     process_images_in_directory(input_directory, output_directory, threshold)
