@@ -52,7 +52,7 @@ def merge_images_2(input_dir, output_dir):
 
                 merged_image = ImageChops.logical_or(left_temp, right_temp)
                 
-                output_path = os.path.join(output_dir, f"{right_image_id}.jpg")
+                output_path = os.path.join(output_dir, f"{right_image_id}.png")
                 merged_image.save(output_path)
             else:
                 print(f"右侧图片不存在: {right_image_path}")
